@@ -27,6 +27,9 @@ public class gps : MonoBehaviour
     float travelDist = 0.0f;
     float timerDist = 0.0f;
 
+    float speed = 0.0f;
+    float avarageSpeed = 0.0f;
+
 
     bool activateGps = true;
 
@@ -114,9 +117,11 @@ public class gps : MonoBehaviour
             //ALTERNATIVE METHOD
             //totalDist = totalDist + distance(latiA, longA, latiB, longB, 'K');
             travelDist = HaversineInM(latiA, longA, latiB, longB);
+            speed = travelDist / 5 *3.6f;
+            avarageSpeed = totalDist/Time.time;
             timerDist = timerDist + travelDist;
             totalDist = totalDist + travelDist;
-            coordinates.text = loc + "\nWalked distance: " + ((Mathf.Round(totalDist / 100))*100) + "Meters";
+            coordinates.text = loc + "\nWalked distance: " + ((Mathf.Round(totalDist / 100))*100) + "Meters" +"\nSpeed: " + Mathf.Round(speed) + "Km/h" + "\nAvarage Speed: " + Mathf.Round(avarageSpeed) + "Km/h";
             // Stop service if there is no need to query location updates continuously
             if (!test)
             {

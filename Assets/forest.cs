@@ -27,8 +27,8 @@ public class forest : MonoBehaviour {
 
             GameObject tree = trees[treeToGrow];
 
-            int treePosX = Random.Range(-50, 50);
-            int treePosZ = Random.Range(15, 100);
+            int treePosX = Random.Range(-115, -10);
+            int treePosZ = Random.Range(35, 105);
             int treePosY = 0;
 
             Vector3 treePos = new Vector3(treePosX, treePosY, treePosZ);
