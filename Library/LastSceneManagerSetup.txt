@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/metsa.unity
+  isLoaded: 1
+  isActive: 1

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "metsaProject.Plugins", "metsaProject.Plugins.csproj", "{4E38AC14-335D-E5EB-2FDA-036238DEBD11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "metsaProject", "metsaProject.csproj", "{D32FB1D3-B8FC-CC20-FCFB-95B14BDE9946}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "metsaProject.Editor", "metsaProject.Editor.csproj", "{6E721318-4AE1-A630-530F-FCFFFC9D2515}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E38AC14-335D-E5EB-2FDA-036238DEBD11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E38AC14-335D-E5EB-2FDA-036238DEBD11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E38AC14-335D-E5EB-2FDA-036238DEBD11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E38AC14-335D-E5EB-2FDA-036238DEBD11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D32FB1D3-B8FC-CC20-FCFB-95B14BDE9946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D32FB1D3-B8FC-CC20-FCFB-95B14BDE9946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D32FB1D3-B8FC-CC20-FCFB-95B14BDE9946}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D32FB1D3-B8FC-CC20-FCFB-95B14BDE9946}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E721318-4AE1-A630-530F-FCFFFC9D2515}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E721318-4AE1-A630-530F-FCFFFC9D2515}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E721318-4AE1-A630-530F-FCFFFC9D2515}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E721318-4AE1-A630-530F-FCFFFC9D2515}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
