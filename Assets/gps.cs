@@ -118,6 +118,8 @@ public class gps : MonoBehaviour
             //totalDist = totalDist + distance(latiA, longA, latiB, longB, 'K');
             travelDist = HaversineInM(latiA, longA, latiB, longB);
             speed = travelDist / 5 *3.6f;
+            if (speed > 35)
+                travelDist = 48.0f;
             avarageSpeed = totalDist/Time.time;
             timerDist = timerDist + travelDist;
             totalDist = totalDist + travelDist;
