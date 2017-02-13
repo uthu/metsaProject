@@ -12,10 +12,27 @@ public class Swipe : MonoBehaviour
     private float minSwipeDist = 50.0f;
     private float maxSwipeTime = 0.5f;
 
+    public GameObject menu;
+
+    public float menuStartPos = -550f;
+    public float menuTargetPos = -180f;
+    bool menuMov = false;
+    bool menuClick = false;
+    Vector3 targetPos;
+    Vector3 refVelocity;
+
 
     // Update is called once per frame
+
+    private void Start()
+    {
+        menu = GameObject.Find("Canvas/Menu");
+    }
+
     void Update()
     {
+        if (menuMov)
+            MoveMenu();
 
         if (Input.touchCount > 0)
         {
@@ -61,11 +78,17 @@ public class Swipe : MonoBehaviour
                             {
                                 if (swipeType.x > 0.0f)
                                 {
-                                    // MOVE RIGHT
+                                    //MOVE RIGHT
+                                    targetPos = new Vector3(menuTargetPos, menu.transform.position.y, menu.transform.position.z);
+                                    menuClick = true;
+                                    menuMov = true;
                                 }
                                 else
                                 {
-                                    // MOVE LEFT
+                                    //MOVE LEFT
+                                    targetPos = new Vector3(menuStartPos, menu.transform.position.y, menu.transform.position.z);
+                                    menuClick = false;
+                                    menuMov = true;
                                 }
                             }
 
@@ -88,5 +111,31 @@ public class Swipe : MonoBehaviour
             }
         }
 
+    }
+    void MoveMenu()
+    {
+        menu.transform.position = Vector3.SmoothDamp(menu.transform.position, targetPos, ref refVelocity, Time.deltaTime * 10);
+
+        if (targetPos == transform.position)
+        {
+            //selectedPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            menuMov = false;
+        }
+
+    }
+    public void MenuClicked()
+    {
+        if (menuClick)
+        {
+            menuClick = false;
+            targetPos = new Vector3(menuStartPos, menu.transform.position.y, menu.transform.position.z);
+            menuMov = true;
+        }
+        else
+        {
+            menuClick = true;
+            targetPos = new Vector3(menuTargetPos, menu.transform.position.y, menu.transform.position.z);
+            menuMov = true;
+        }
     }
 }

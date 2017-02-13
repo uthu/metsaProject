@@ -72,6 +72,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GameEngine.cs" />
+    <Compile Include="Assets\Swipe.cs" />
     <Compile Include="Assets\forest.cs" />
     <Compile Include="Assets\gps.cs" />
   </ItemGroup>

@@ -18,17 +18,17 @@ public class forest : MonoBehaviour {
 	
 	}
 
-    public void GrowTree(float totalDist)
+    public void GrowTree(float lifeTimeDist)
     {
-        while (amountKilometers < totalDist)
+        while (amountKilometers < lifeTimeDist)
         {
             GameObject clone;
             int treeToGrow = Random.Range(0, 3);
 
             GameObject tree = trees[treeToGrow];
 
-            int treePosX = Random.Range(-115, -10);
-            int treePosZ = Random.Range(35, 105);
+            int treePosX = Random.Range(-80, -48);
+            int treePosZ = Random.Range(44, 120);
             int treePosY = 0;
 
             Vector3 treePos = new Vector3(treePosX, treePosY, treePosZ);

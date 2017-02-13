@@ -22,7 +22,11 @@ public class gps : MonoBehaviour
 
     public string loc;
     Text coordinates;
+    Text avarageSpeedText;
+    Text totalDistanceText;
+    Text locationText;
 
+    public float lifeTimeDist = 0.0f;
     public float totalDist = 0.0f;
     float travelDist = 0.0f;
     float timerDist = 0.0f;
@@ -56,6 +60,9 @@ public class gps : MonoBehaviour
     {
         Input.location.Start();
         coordinates = GameObject.Find("Canvas/coordinates").GetComponent<Text>();
+        avarageSpeedText = GameObject.Find("Canvas/Menu/AvarageSpeed").GetComponent<Text>();
+        totalDistanceText = GameObject.Find("Canvas/Menu/TotalDistance").GetComponent<Text>();
+        locationText = GameObject.Find("Canvas/Menu/Location").GetComponent<Text>();
         coroutine1 = ShowLocation(5.0f);
         coroutine2 = Timer(600.0f);
         StartCoroutine(coroutine1);
@@ -106,7 +113,7 @@ public class gps : MonoBehaviour
                 latiB = Input.location.lastData.latitude;
                 longB = Input.location.lastData.longitude;
             }
-            loc = "Location: " + latiA +" "+ longA;
+            loc =latiA +"\n"+ longA;
             //METHOD1
             /*
             var point1 = new GeoCoordinate(latiA, longA);
@@ -123,7 +130,11 @@ public class gps : MonoBehaviour
             avarageSpeed = totalDist/Time.time;
             timerDist = timerDist + travelDist;
             totalDist = totalDist + travelDist;
-            coordinates.text = loc + "\nWalked distance: " + ((Mathf.Round(totalDist / 100))*100) + "Meters" +"\nSpeed: " + Mathf.Round(speed) + "Km/h" + "\nAvarage Speed: " + Mathf.Round(avarageSpeed) + "Km/h";
+
+            locationText.text ="Location: " + "\n" +loc;
+            totalDistanceText.text = "Total Distance: " + lifeTimeDist;
+            avarageSpeedText.text = "Avarage Speed: " + Mathf.Round(avarageSpeed) + "Km/h";
+            coordinates.text ="Walked distance: " + ((Mathf.Round(totalDist / 100))*100) + "Meters" +"\nSpeed: " + Mathf.Round(speed) + "Km/h";
             // Stop service if there is no need to query location updates continuously
             if (!test)
             {
@@ -135,10 +146,10 @@ public class gps : MonoBehaviour
                 latiA = latiB;
                 longA = longB;
             }
-            
-            //Input.location.Stop();
 
-            if (totalDist > 0)
+            //Input.location.Stop();
+            lifeTimeDist = totalDist + lifeTimeDist;
+            if (lifeTimeDist > 0)
                 this.gameObject.GetComponent<forest>().GrowTree(totalDist);
             
         }
