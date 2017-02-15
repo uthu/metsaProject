@@ -60,9 +60,9 @@ public class gps : MonoBehaviour
     {
         Input.location.Start();
         coordinates = GameObject.Find("Canvas/coordinates").GetComponent<Text>();
-        avarageSpeedText = GameObject.Find("Canvas/Menu/AvarageSpeed").GetComponent<Text>();
-        totalDistanceText = GameObject.Find("Canvas/Menu/TotalDistance").GetComponent<Text>();
-        locationText = GameObject.Find("Canvas/Menu/Location").GetComponent<Text>();
+        avarageSpeedText = GameObject.Find("Canvas1/Menu/AvarageSpeed").GetComponent<Text>();
+        totalDistanceText = GameObject.Find("Canvas1/Menu/TotalDistance").GetComponent<Text>();
+        locationText = GameObject.Find("Canvas1/Menu/Location").GetComponent<Text>();
         coroutine1 = ShowLocation(5.0f);
         coroutine2 = Timer(600.0f);
         StartCoroutine(coroutine1);
