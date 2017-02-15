@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692534, g: 0.49678725, b: 0.57508564, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692558, g: 0.49678743, b: 0.57508624, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -380,8 +380,9 @@ MonoBehaviour:
   - {fileID: 1000013874612688, guid: 1f7019b273127504c8cdcb2bae0aac5b, type: 2}
   - {fileID: 1000010685437634, guid: 390bf6a81c8bdf24f90d6c83d6a6f47e, type: 2}
   - {fileID: 1000011625236694, guid: 4c982d9ae1fd9eb4fa92362f26083981, type: 2}
-  treePositions:
-  - {x: 0, y: 0, z: 0}
+  PosX: 
+  PosY: 
+  treePositions: []
 --- !u!114 &306758955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1138,7 +1139,7 @@ GameObject:
   - 4: {fileID: 1787188048}
   - 212: {fileID: 1787188047}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
