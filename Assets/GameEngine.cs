@@ -11,8 +11,12 @@ public class GameEngine : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SaveGame();
+            Application.Quit();
+        }
+    }
 
     public void LoadGame()
     {      
@@ -20,6 +24,6 @@ public class GameEngine : MonoBehaviour {
     }
     public void SaveGame()
     {
-        PlayerPrefs.SetFloat("WalkedDistance", gpsObj.lifeTimeDist);
+        PlayerPrefs.SetFloat("WalkedDistance", gpsObj.lifeTimeDist + gpsObj.totalDist);
     }
 }

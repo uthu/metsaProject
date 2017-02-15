@@ -27,6 +27,7 @@ public class gps : MonoBehaviour
     Text locationText;
 
     public float lifeTimeDist = 0.0f;
+    public float lifeTimeDistTemp = 0.0f;
     public float totalDist = 0.0f;
     float travelDist = 0.0f;
     float timerDist = 0.0f;
@@ -148,9 +149,9 @@ public class gps : MonoBehaviour
             }
 
             //Input.location.Stop();
-            lifeTimeDist = totalDist + lifeTimeDist;
-            if (lifeTimeDist > 0)
-                this.gameObject.GetComponent<forest>().GrowTree(totalDist);
+            lifeTimeDistTemp = totalDist + lifeTimeDist;
+            if (lifeTimeDistTemp > 0)
+                this.gameObject.GetComponent<forest>().GrowTree(lifeTimeDistTemp);
             
         }
 
