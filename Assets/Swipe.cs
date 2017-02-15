@@ -14,8 +14,8 @@ public class Swipe : MonoBehaviour
 
     public GameObject menu;
 
-    public float menuStartPos = -550f;
-    public float menuTargetPos = -180f;
+    public float menuStartPos = -500f;
+    public float menuTargetPos = 200f;
     bool menuMov = false;
     bool menuClick = false;
     Vector3 targetPos;
@@ -26,7 +26,7 @@ public class Swipe : MonoBehaviour
 
     private void Start()
     {
-        menu = GameObject.Find("Canvas/Menu");
+        menu = GameObject.Find("Canvas1/Menu");
     }
 
     void Update()
