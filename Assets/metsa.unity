@@ -351,6 +351,9 @@ MonoBehaviour:
   longA: 25.46673
   longB: 25.44416
   test: 0
+  birds:
+  - {fileID: 1000012052343270, guid: 49e5b786109704f4c9801a6fa51aecca, type: 2}
+  - {fileID: 1000010884581854, guid: 9e1c1c04fd8caff4a96b484cb9dae3bf, type: 2}
 --- !u!4 &306758953
 Transform:
   m_ObjectHideFlags: 0
@@ -1185,7 +1188,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1787188046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 12, y: 12, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []

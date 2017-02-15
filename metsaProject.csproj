@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Assets\GameEngine.cs" />
     <Compile Include="Assets\Swipe.cs" />
+    <Compile Include="Assets\bird.cs" />
     <Compile Include="Assets\forest.cs" />
     <Compile Include="Assets\gps.cs" />
   </ItemGroup>
