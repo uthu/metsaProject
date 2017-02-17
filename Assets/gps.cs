@@ -134,10 +134,10 @@ public class gps : MonoBehaviour
             timerDist = timerDist + travelDist;
             totalDist = totalDist + travelDist;
 
-            locationText.text ="Location: " + "\n" +loc;
-            totalDistanceText.text = "Total Distance: " + lifeTimeDist;
-            avarageSpeedText.text = "Avarage Speed: " + Mathf.Round(avarageSpeed) + "Km/h";
-            coordinates.text ="Walked distance: " + ((Mathf.Round(totalDist / 100))*100) + "Meters" +"\nSpeed: " + Mathf.Round(speed) + "Km/h";
+            locationText.text ="Sijainti: " + "\n" +loc;
+            totalDistanceText.text = "Yhteensä kuljettu matka: " + (lifeTimeDist + totalDist);
+            avarageSpeedText.text = "Keskinopeus: " + Mathf.Round(avarageSpeed) + "Km/h";
+            coordinates.text ="Kuljettu matka: " + ((Mathf.Round(totalDist / 100))*100) + "Metriä" +"\nNopeus: " + Mathf.Round(speed) + "Km/h";
             // Stop service if there is no need to query location updates continuously
             if (!test)
             {
