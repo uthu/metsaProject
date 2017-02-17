@@ -47,6 +47,8 @@ public class gps : MonoBehaviour
 
     private IEnumerator coroutine1;
     private IEnumerator coroutine2;
+    //birds
+    public List<GameObject> birds = new List<GameObject>();
 
     //TextMesh coordinates;
     //public float coord;
@@ -152,7 +154,31 @@ public class gps : MonoBehaviour
             lifeTimeDistTemp = totalDist + lifeTimeDist;
             if (lifeTimeDistTemp > 0)
                 this.gameObject.GetComponent<forest>().GrowTree(lifeTimeDistTemp);
-            
+
+            //bird spawn
+            int spawn = Random.Range(0, 2);
+
+            if (spawn == 1)
+            {
+                int birdToSpawn = Random.Range(0, 2);
+                GameObject bird = birds[birdToSpawn];
+                int d = Random.Range(0, 3);
+                for (int i = 0; i < d; i++)
+                {
+                    if (birdToSpawn == 0)
+                    {
+                        Vector3 birdPos = new Vector3(40f, Random.Range(0f, 70f), 1f);
+                        GameObject clone = Instantiate(bird, birdPos, bird.transform.rotation) as GameObject;
+                    }
+
+                    if (birdToSpawn == 1)
+                    {
+                        Vector3 birdPos = new Vector3(-50f, Random.Range(4f, 100f), 1f);
+                        GameObject clone = Instantiate(bird, birdPos, bird.transform.rotation) as GameObject;
+                    }
+                }               
+               
+            }
         }
 
 

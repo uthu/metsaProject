@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692534, g: 0.49678725, b: 0.57508564, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692558, g: 0.49678743, b: 0.57508624, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -351,6 +351,9 @@ MonoBehaviour:
   longA: 25.46673
   longB: 25.44416
   test: 0
+  birds:
+  - {fileID: 1000012052343270, guid: 49e5b786109704f4c9801a6fa51aecca, type: 2}
+  - {fileID: 1000010884581854, guid: 9e1c1c04fd8caff4a96b484cb9dae3bf, type: 2}
 --- !u!4 &306758953
 Transform:
   m_ObjectHideFlags: 0
@@ -380,8 +383,9 @@ MonoBehaviour:
   - {fileID: 1000013874612688, guid: 1f7019b273127504c8cdcb2bae0aac5b, type: 2}
   - {fileID: 1000010685437634, guid: 390bf6a81c8bdf24f90d6c83d6a6f47e, type: 2}
   - {fileID: 1000011625236694, guid: 4c982d9ae1fd9eb4fa92362f26083981, type: 2}
-  treePositions:
-  - {x: 0, y: 0, z: 0}
+  PosX: 
+  PosY: 
+  treePositions: []
 --- !u!114 &306758955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1138,7 +1142,7 @@ GameObject:
   - 4: {fileID: 1787188048}
   - 212: {fileID: 1787188047}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1184,7 +1188,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1787188046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 12, y: 12, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
