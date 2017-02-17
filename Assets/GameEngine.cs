@@ -26,4 +26,23 @@ public class GameEngine : MonoBehaviour {
     {
         PlayerPrefs.SetFloat("WalkedDistance", gpsObj.lifeTimeDist + gpsObj.totalDist);
     }
+
+    public void TestDistance()
+    {
+        gpsObj.totalDist = gpsObj.totalDist + 1000f;
+    }
+
+    public void TestRuntime()
+    {
+
+    }
+
+
+    public void TestReset()
+    {
+        gpsObj.totalDist = 0f;
+        gpsObj.lifeTimeDist = 0f;
+        gpsObj.lifeTimeDistTemp = 0f;
+        PlayerPrefs.SetFloat("WalkedDistance", 0f);
+    }
 }
