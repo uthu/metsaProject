@@ -6,19 +6,11 @@ using UnityEngine.UI;
 public class gps : MonoBehaviour
 {
     //TODO
-    //-Check if there is movement in specific time -> grow tree
-    //
     //-If speed is too high -> dont grow tree
     //
     //
     //
     //
-    //
-    //
-    //
-    //
-    //
-
 
     public string loc;
     Text coordinates;
@@ -38,11 +30,16 @@ public class gps : MonoBehaviour
 
     bool activateGps = true;
 
+    public float tempLatiA;
+    public float tempLongA;
     public float latiA = 31.997976f;
     public float latiB = 31.99212f;
     public float longA = 115.762877f;
     public float longB = 115.763228f;
     public bool test = false;
+
+    int tempTimer = 0;
+    float tempTravel = 0;
 
 
     private IEnumerator coroutine1;
@@ -67,20 +64,23 @@ public class gps : MonoBehaviour
         totalDistanceText = GameObject.Find("Canvas1/Menu/TotalDistance").GetComponent<Text>();
         locationText = GameObject.Find("Canvas1/Menu/Location").GetComponent<Text>();
         coroutine1 = ShowLocation(5.0f);
-        coroutine2 = Timer(600.0f);
+        //coroutine2 = Timer(600.0f);
         StartCoroutine(coroutine1);
         StartCoroutine(coroutine2);
     }
 
-    private IEnumerator Timer(float waitTime)
+   /* private IEnumerator Timer(float waitTime)
     {
         while (true)
         {
             yield return new WaitForSeconds(waitTime);
             if (travelDist > 6000)
+            {
                 totalDist = totalDist - travelDist + 6000;
+                travelDist = 0f;
+            }
         }
-    }
+    }*/
     private IEnumerator ShowLocation(float waitTime)
     {
         while (true)
@@ -133,12 +133,31 @@ public class gps : MonoBehaviour
             avarageSpeed = totalDist/Time.time;
             timerDist = timerDist + travelDist;
             totalDist = totalDist + travelDist;
+            tempTravel = tempTravel + travelDist;
+
+            if (tempTimer == 0)
+            {
+                tempLatiA = latiA;
+                tempLongA = longA;
+                tempTimer++;
+            }
+            else
+            {
+                tempTimer++;
+            }
+            if (tempTimer > 60)
+            {
+                travelDist = HaversineInM(tempLatiA, tempLongA, latiB, longB);
+                totalDist = totalDist - tempTravel + travelDist;
+                tempTravel = 0f;
+                tempTimer = 0;
+            }
 
             locationText.text ="Sijainti: " + "\n" +loc;
             totalDistanceText.text = "Yhteensä kuljettu matka: " + (lifeTimeDist + totalDist);
             avarageSpeedText.text = "Keskinopeus: " + Mathf.Round(avarageSpeed) + "Km/h";
             coordinates.text ="Kuljettu matka: " + ((Mathf.Round(totalDist / 100))*100) + "Metriä" +"\nNopeus: " + Mathf.Round(speed) + "Km/h";
-            // Stop service if there is no need to query location updates continuously
+            
             if (!test)
             {
                 latiA = Input.location.lastData.latitude;
@@ -149,8 +168,10 @@ public class gps : MonoBehaviour
                 latiA = latiB;
                 longA = longB;
             }
-
+            // Stop service if there is no need to query location updates continuously
             //Input.location.Stop();
+
+            //add lifetime dist (saved data)
             lifeTimeDistTemp = totalDist + lifeTimeDist;
             if (lifeTimeDistTemp > 0)
                 this.gameObject.GetComponent<forest>().GrowTree(lifeTimeDistTemp);
