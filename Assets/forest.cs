@@ -20,7 +20,6 @@ public class forest : MonoBehaviour {
     int animalPosSize = 0;
     int treePosSize = 0;
     
-    // Use this for initialization
     void Start () {
         //create tree coordinates
         for (int i = -17; i < 17; i = i + 3)
@@ -60,7 +59,6 @@ public class forest : MonoBehaviour {
         treePosSize = treePositions.Count;
     }
 	
-	// Update is called once per frame
 	void Update () {
 	
 	}

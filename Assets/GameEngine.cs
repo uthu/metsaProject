@@ -2,14 +2,13 @@
 using System.Collections;
 
 public class GameEngine : MonoBehaviour {
+
     gps gpsObj;
-	// Use this for initialization
 	void Start () {
         gpsObj = GameObject.Find("gps").GetComponent<gps>();
         LoadGame();
 	}
 	
-	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -34,6 +33,7 @@ public class GameEngine : MonoBehaviour {
 
     public void TestRuntime()
     {
+        gpsObj.runTime = gpsObj.runTime + 600f;
 
     }
 
