@@ -8,15 +8,19 @@ public class gps : MonoBehaviour
     //TODO
     //-If speed is too high -> dont grow tree
     //
-    //
-    //
-    //
 
     public string loc;
     Text coordinates;
     Text avarageSpeedText;
     Text totalDistanceText;
     Text locationText;
+
+    Text aMinuteText;
+    Text bMinuteText;
+    Text cMinuteText;
+    Text dMinuteText;
+
+    Image starImage;
 
     public float lifeTimeDist = 0.0f;
     public float lifeTimeDistTemp = 0.0f;
@@ -41,32 +45,42 @@ public class gps : MonoBehaviour
     int tempTimer = 0;
     float tempTravel = 0;
 
+    //health info and runtime
+    public float runTime = 0f;
+
 
     private IEnumerator coroutine1;
-    private IEnumerator coroutine2;
+    //private IEnumerator coroutine2;
     //birds
     public List<GameObject> birds = new List<GameObject>();
 
     //TextMesh coordinates;
     //public float coord;
 
-    // Update is called once per frame
-    /*void Update()
-    {
-        coordinates.text = ("Location: " + Input.location.lastData.latitude + " " + Input.location.lastData.longitude + " " + Input.location.lastData.altitude + " " + Input.location.lastData.horizontalAccuracy + " " + Input.location.lastData.timestamp);
-    }*/
-
     void Start()
     {
         Input.location.Start();
-        coordinates = GameObject.Find("Canvas/coordinates").GetComponent<Text>();
+        coordinates = GameObject.Find("Canvas3/coordinates").GetComponent<Text>();
         avarageSpeedText = GameObject.Find("Canvas1/Menu/AvarageSpeed").GetComponent<Text>();
         totalDistanceText = GameObject.Find("Canvas1/Menu/TotalDistance").GetComponent<Text>();
-        locationText = GameObject.Find("Canvas1/Menu/Location").GetComponent<Text>();
+        locationText = GameObject.Find("Canvas3/Location").GetComponent<Text>();
+        aMinuteText = GameObject.Find("Canvas1/Menu/HealthInfo/10min").GetComponent<Text>();
+        bMinuteText = GameObject.Find("Canvas1/Menu/HealthInfo/20min").GetComponent<Text>();
+        cMinuteText = GameObject.Find("Canvas1/Menu/HealthInfo/60min").GetComponent<Text>();
+        dMinuteText = GameObject.Find("Canvas1/Menu/HealthInfo/120min").GetComponent<Text>();
+
+        starImage = GameObject.Find("Canvas1/Menu/HealthInfo/star").GetComponent<Image>();
+
+        aMinuteText.enabled = false;
+        bMinuteText.enabled = false;
+        cMinuteText.enabled = false;
+        dMinuteText.enabled = false;
+        starImage.enabled = false;
+
         coroutine1 = ShowLocation(5.0f);
         //coroutine2 = Timer(600.0f);
         StartCoroutine(coroutine1);
-        StartCoroutine(coroutine2);
+        //StartCoroutine(coroutine2);
     }
 
    /* private IEnumerator Timer(float waitTime)
@@ -87,7 +101,7 @@ public class gps : MonoBehaviour
         {
             yield return new WaitForSeconds(waitTime);
 
-            /*print("WaitAndPrint " + Time.time);*/
+            runTime = runTime + 5f;
 
             // First, check if user has location service enabled
             /////////////////////////////////////////////////////////////////////////////////////
@@ -101,6 +115,40 @@ public class gps : MonoBehaviour
             // Access granted and location value could be retrieved
             /////////////////////////////////////////////////////////////////////////////////////
             //loc = "Location: " + Input.location.lastData.latitude + " " + Input.location.lastData.longitude + " " + Input.location.lastData.altitude + " " + Input.location.lastData.horizontalAccuracy + " " + Input.location.lastData.timestamp;
+
+            //health timer info
+            if (runTime >= 600)
+            {
+                starImage.enabled = true;
+                aMinuteText.enabled = true;
+            }
+            if (runTime >= 1200)
+            {
+
+                aMinuteText.enabled = false;
+                cMinuteText.enabled = false;
+                dMinuteText.enabled = false;
+
+                bMinuteText.enabled = true;
+            }
+            if (runTime >= 3600)
+            {
+                aMinuteText.enabled = false;
+                bMinuteText.enabled = false;
+                dMinuteText.enabled = false;
+
+                cMinuteText.enabled = true;
+            }
+
+            if (runTime >= 7200)
+            {
+                aMinuteText.enabled = false;
+                bMinuteText.enabled = false;
+                cMinuteText.enabled = false;
+
+                dMinuteText.enabled = true;
+            }
+
 
             if (activateGps)
             {
@@ -116,16 +164,12 @@ public class gps : MonoBehaviour
                 latiB = Input.location.lastData.latitude;
                 longB = Input.location.lastData.longitude;
             }
-            loc =latiA +"\n"+ longA;
-            //METHOD1
-            /*
-            var point1 = new GeoCoordinate(latiA, longA);
-            var point2 = new GeoCoordinate(latiB, longB);
+            loc ="Leveysaste: "+latiA + " Pituusaste: " + longA;
 
-            return point1.GetDistanceTo(point2d);
-            */
             //ALTERNATIVE METHOD
             //totalDist = totalDist + distance(latiA, longA, latiB, longB, 'K');
+
+            //calculate distance
             travelDist = HaversineInM(latiA, longA, latiB, longB);
             speed = travelDist / 5 *3.6f;
             if (speed > 35)
@@ -152,11 +196,11 @@ public class gps : MonoBehaviour
                 tempTravel = 0f;
                 tempTimer = 0;
             }
-
+            //Set texboxes texts
             locationText.text ="Sijainti: " + "\n" +loc;
-            totalDistanceText.text = "Yhteensä kuljettu matka: " + (lifeTimeDist + totalDist);
-            avarageSpeedText.text = "Keskinopeus: " + Mathf.Round(avarageSpeed) + "Km/h";
-            coordinates.text ="Kuljettu matka: " + ((Mathf.Round(totalDist / 100))*100) + "Metriä" +"\nNopeus: " + Mathf.Round(speed) + "Km/h";
+            totalDistanceText.text = "Yhteensä kuljettu matka: " + (lifeTimeDist + totalDist) + " Metriä";
+            avarageSpeedText.text = "Keskinopeus: " + Mathf.Round(avarageSpeed) + " Km/h";
+            coordinates.text ="Kuljettu matka: " + ((Mathf.Round(totalDist / 100))*100) + " Metriä" +"\nNopeus: " + Mathf.Round(speed) + " Km/h";
             
             if (!test)
             {
@@ -205,20 +249,6 @@ public class gps : MonoBehaviour
 
     }
 
-   /* public static void Main()
-    {
-        Console.WriteLine("Hello World");
-
-        float meLat = 65.01124f;
-        float meLong = 25.46673f;
-
-
-        float result1 = HaversineInM(meLat, meLong, 65.00193f, 25.44416f);
-        float result2 = HaversineInM(meLat, meLong, 64.9966681f, 150.77061469270831f);
-
-        Console.WriteLine(result1);
-        Console.WriteLine(result2);
-    }*/
 
     static float _eQuatorialEarthRadius = 6378.1370f;
     static float _d2r = (Mathf.PI / 180f);

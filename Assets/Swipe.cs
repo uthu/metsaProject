@@ -22,8 +22,6 @@ public class Swipe : MonoBehaviour
     Vector3 refVelocity;
 
 
-    // Update is called once per frame
-
     private void Start()
     {
         menu = GameObject.Find("Canvas1/Menu");
