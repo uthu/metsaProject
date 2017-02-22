@@ -19,6 +19,7 @@ public class gps : MonoBehaviour
     Text bMinuteText;
     Text cMinuteText;
     Text dMinuteText;
+    Text runTimeText;
 
     Image starImage;
 
@@ -28,7 +29,7 @@ public class gps : MonoBehaviour
     float travelDist = 0.0f;
     float timerDist = 0.0f;
 
-    float speed = 0.0f;
+    public float speed = 0.0f;
     float avarageSpeed = 0.0f;
 
 
@@ -68,6 +69,8 @@ public class gps : MonoBehaviour
         bMinuteText = GameObject.Find("Canvas1/Menu/HealthInfo/20min").GetComponent<Text>();
         cMinuteText = GameObject.Find("Canvas1/Menu/HealthInfo/60min").GetComponent<Text>();
         dMinuteText = GameObject.Find("Canvas1/Menu/HealthInfo/120min").GetComponent<Text>();
+
+        runTimeText = GameObject.Find("Canvas1/Menu/HealthInfo/RunTime").GetComponent<Text>();
 
         starImage = GameObject.Find("Canvas1/Menu/HealthInfo/star").GetComponent<Image>();
 
@@ -201,6 +204,8 @@ public class gps : MonoBehaviour
             totalDistanceText.text = "Yhteensä kuljettu matka: " + (lifeTimeDist + totalDist) + " Metriä";
             avarageSpeedText.text = "Keskinopeus: " + Mathf.Round(avarageSpeed) + " Km/h";
             coordinates.text ="Kuljettu matka: " + ((Mathf.Round(totalDist / 100))*100) + " Metriä" +"\nNopeus: " + Mathf.Round(speed) + " Km/h";
+
+            runTimeText.text ="Kulunut aika: " + Mathf.Round(runTime / 60) + " minuuttia";
             
             if (!test)
             {
