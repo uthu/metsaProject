@@ -33,8 +33,8 @@ public class GameEngine : MonoBehaviour {
     public void TestDistance()
     {
         gpsObj.totalDist = gpsObj.totalDist + 1000f;
-        GameObject.Find("Canvas1/Menu/TotalDistance").GetComponent<Text>().text = "Yhteensä kuljettu matka: " + (gpsObj.lifeTimeDist + gpsObj.totalDist) + " Metriä";
-        GameObject.Find("Canvas3/coordinates").GetComponent<Text>().text = "Kuljettu matka: " + ((Mathf.Round(gpsObj.totalDist / 100)) * 100) + "Metriä" + "\nNopeus: " + Mathf.Round(gpsObj.speed) + "Km/h";
+        GameObject.Find("Canvas1/Menu/TotalDistance").GetComponent<Text>().text = "Yhteensä kuljettu matka: " + Mathf.Round((gpsObj.lifeTimeDist + gpsObj.totalDist)/1000) + " Kilometriä";
+        GameObject.Find("Canvas1/Info/coordinates").GetComponent<Text>().text = "Kuljettu matka: " + ((Mathf.Round(gpsObj.totalDist / 100)) * 100) + "Metriä" + "\nNopeus: " + Mathf.Round(gpsObj.speed) + "Km/h";
     }
 
     public void TestRuntime()
@@ -62,5 +62,13 @@ public class GameEngine : MonoBehaviour {
         forestObj.treePosSize = forestObj.treePositions.Count;
         forestObj.amountKilometers = 0f;
         forestObj.animalCounter = 0;
+    }
+    public void TestWithGps()
+    {
+        gpsObj.test = false;
+    }
+    public void TestWithOutGps()
+    {
+        gpsObj.test = true;
     }
 }

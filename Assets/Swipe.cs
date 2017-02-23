@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Swipe : MonoBehaviour
 {
@@ -13,18 +14,31 @@ public class Swipe : MonoBehaviour
     private float maxSwipeTime = 0.5f;
 
     public GameObject menu;
+    public GameObject info;
 
     public float menuStartPos = -500f;
     public float menuTargetPos = 200f;
+
+    public float infoStartPos = 0f;
+    public float infoTargetPos = 0f;
     bool menuMov = false;
-    bool menuClick = false;
+    public bool menuClick = false;
     Vector3 targetPos;
+    Vector3 infotargetPos;
     Vector3 refVelocity;
+
+    Image starImage2;
 
 
     private void Start()
     {
         menu = GameObject.Find("Canvas1/Menu");
+        info = GameObject.Find("Canvas1/Info");
+
+        starImage2 = GameObject.Find("Canvas1/Menu/HealthInfo/star2").GetComponent<Image>();
+
+        infoStartPos = info.transform.position.x;
+        menuStartPos = menu.transform.position.x;
     }
 
     void Update()
@@ -113,6 +127,7 @@ public class Swipe : MonoBehaviour
     void MoveMenu()
     {
         menu.transform.position = Vector3.SmoothDamp(menu.transform.position, targetPos, ref refVelocity, Time.deltaTime * 10);
+        info.transform.position = Vector3.Lerp(info.transform.position, infotargetPos, Time.deltaTime * 10);
 
         if (targetPos == transform.position)
         {
@@ -127,13 +142,18 @@ public class Swipe : MonoBehaviour
         {
             menuClick = false;
             targetPos = new Vector3(menuStartPos, menu.transform.position.y, menu.transform.position.z);
+            infotargetPos = new Vector3(infoStartPos, info.transform.position.y, info.transform.position.z);
             menuMov = true;
+
         }
         else
         {
             menuClick = true;
             targetPos = new Vector3(menuTargetPos, menu.transform.position.y, menu.transform.position.z);
+            infotargetPos = new Vector3(infoTargetPos, info.transform.position.y, info.transform.position.z);
             menuMov = true;
+
+            starImage2.enabled = false;
         }
     }
 }
