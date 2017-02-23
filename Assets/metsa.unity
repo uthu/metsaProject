@@ -553,10 +553,10 @@ MonoBehaviour:
   speed: 0
   tempLatiA: 0
   tempLongA: 0
-  latiA: 0
-  latiB: 0
-  longA: 0
-  longB: 0
+  latiA: 65.01123
+  latiB: 65.11123
+  longA: 25.46671
+  longB: 25.56671
   test: 0
   runTime: 0
   birds:
@@ -621,9 +621,9 @@ MonoBehaviour:
   menu: {fileID: 0}
   info: {fileID: 0}
   menuStartPos: -410
-  menuTargetPos: 330
+  menuTargetPos: 350
   infoStartPos: 0
-  infoTargetPos: 285
+  infoTargetPos: 350
   menuClick: 0
 --- !u!114 &306758956
 MonoBehaviour:
