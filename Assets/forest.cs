@@ -4,8 +4,10 @@ using System.Collections.Generic;
 
 public class forest : MonoBehaviour {
 
-    float amountKilometers = 0f;
-    int animalCounter = 0;
+    public float amountKilometers = 0f;
+    public int animalCounter = 0;
+
+    public List<GameObject> clones = new List<GameObject>();
 
     public List<GameObject> trees = new List<GameObject>();
     public List<int> PosX = new List<int>();
@@ -17,8 +19,8 @@ public class forest : MonoBehaviour {
     public List<int> AnPosY = new List<int>();
     public List<Vector3> animalPositions = new List<Vector3>();
 
-    int animalPosSize = 0;
-    int treePosSize = 0;
+    public int animalPosSize = 0;
+    public int treePosSize = 0;
     
     void Start () {
         //create tree coordinates
@@ -88,6 +90,8 @@ public class forest : MonoBehaviour {
 
                 Vector3 treePosV = new Vector3(treePosX, treePosY, treePosZ);
                 clone = Instantiate(tree, treePosV, treeRot) as GameObject;
+                clones.Add(clone);
+
                 treePosSize--;
             }
             amountKilometers = amountKilometers + 500f;
@@ -168,6 +172,7 @@ public class forest : MonoBehaviour {
 
             Vector3 animalPosV = new Vector3(animalPosX, animalPosY, animalPosZ);
             cloneAnim = Instantiate(animal, animalPosV, animalRot) as GameObject;
+            clones.Add(cloneAnim);
             animalPosSize--;
         }
     } 

@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692558, g: 0.49678743, b: 0.57508624, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692534, g: 0.49678725, b: 0.57508564, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: <TotalDistance>
+  m_Text: "<KilometritYhteens\xE4>"
 --- !u!222 &22567963
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -305,7 +305,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: <AverageSpeed>
+  m_Text: <Keskinopeus>
 --- !u!222 &77891092
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -430,7 +430,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Add 10 min runtime
+  m_Text: "Lis\xE4\xE4 10 min k\xE4ytt\xF6aikaa"
 --- !u!222 &227165075
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -581,6 +581,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a21351270b9334697111b1153a9026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amountKilometers: 0
+  animalCounter: 0
+  clones: []
   trees:
   - {fileID: 1000010537912404, guid: 28114df6845577c418a35462b1cfe7a0, type: 2}
   - {fileID: 1000013874612688, guid: 1f7019b273127504c8cdcb2bae0aac5b, type: 2}
@@ -597,6 +600,8 @@ MonoBehaviour:
   AnPosX: 
   AnPosY: 
   animalPositions: []
+  animalPosSize: 0
+  treePosSize: 0
 --- !u!114 &306758955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -812,7 +817,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: <Location>
+  m_Text: <Sijainti>
 --- !u!222 &372563160
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1068,7 +1073,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: <RunTIme>
+  m_Text: <KulunutAika>
 --- !u!222 &474888612
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1193,7 +1198,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Checking GPS..
+  m_Text: "Etsit\xE4\xE4n GPS-signaalia..."
 --- !u!222 &526147356
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1531,7 +1536,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Add 1 kilometer
+  m_Text: "Lis\xE4\xE4 1 kilometri"
 --- !u!222 &638722265
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1730,7 +1735,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Reset Save
+  m_Text: "Tyhjenn\xE4 tallennus"
 --- !u!222 &702788949
 CanvasRenderer:
   m_ObjectHideFlags: 0
