@@ -92,6 +92,7 @@ public class Swipe : MonoBehaviour
                                 {
                                     //MOVE RIGHT
                                     targetPos = new Vector3(menuTargetPos, menu.transform.position.y, menu.transform.position.z);
+                                    infotargetPos = new Vector3(infoTargetPos, info.transform.position.y, info.transform.position.z);
                                     menuClick = true;
                                     menuMov = true;
                                 }
@@ -99,8 +100,11 @@ public class Swipe : MonoBehaviour
                                 {
                                     //MOVE LEFT
                                     targetPos = new Vector3(menuStartPos, menu.transform.position.y, menu.transform.position.z);
+                                    infotargetPos = new Vector3(infoStartPos, info.transform.position.y, info.transform.position.z);
                                     menuClick = false;
                                     menuMov = true;
+
+                                    starImage2.enabled = false;
                                 }
                             }
 
