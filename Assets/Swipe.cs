@@ -95,6 +95,7 @@ public class Swipe : MonoBehaviour
                                     infotargetPos = new Vector3(infoTargetPos, info.transform.position.y, info.transform.position.z);
                                     menuClick = true;
                                     menuMov = true;
+                                    starImage2.enabled = false;
                                 }
                                 else
                                 {
